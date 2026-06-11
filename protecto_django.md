@@ -1,57 +1,16 @@
-# 🚀 Proyecto Django 6.0 - Guía de Instalación
 
-Este documento describe paso a paso cómo configurar el entorno de desarrollo e iniciar un proyecto utilizando **Django 6.0**.
 
----
+# INSTALACION ENTORNO VIRTUAL
 
-## 📌 1. Requisitos Previos
-
-Antes de comenzar, asegúrate de tener instalado:
-
-- **Python 3.10 o superior**
-- **pip**: gestor de paquetes de Python
-
-Puedes verificar las versiones instaladas con:
-
-```bash
-python --version
-pip --version
-```
 
 ---
-
-## 🧱 2. Entorno Virtual
-#modificar cn palabras propias
-El entorno virtual, también conocido como `venv`, permite crear un espacio aislado para instalar las librerías del proyecto.
-
-### ¿Para qué sirve?
-
-Sirve para evitar conflictos entre versiones de librerías de diferentes proyectos.
-
-Por ejemplo:
-
-- Un proyecto puede usar Django 5.0.
-- Otro proyecto puede usar Django 6.0.
-
-Gracias al entorno virtual, ambos proyectos pueden existir en la misma computadora sin interferir entre sí.
-
----
-
-## ⚙️ 3. Crear el Entorno Virtual
-
-Desde la carpeta raíz del proyecto, ejecuta:
+## CREA EL ENTORNO VIRTUAL
 
 ```bash
 python -m venv venv
 ```
 
-Esto creará una carpeta llamada `venv/`.
-
----
-
-## ▶️ 4. Activar el Entorno Virtual
-
-### En Windows
+## ACTIVA EL ENTORNO VIRTUAL
 
 ```bash
 .\venv\Scripts\activate
@@ -62,34 +21,28 @@ Esto creará una carpeta llamada `venv/`.
 ```bash
 source venv/bin/activate
 ```
-
-Cuando el entorno virtual esté activado, normalmente verás algo como esto al inicio de la terminal:
+## INSTALA LA LIBRERIA DE DJANGO
 
 ```bash
-(venv)
+pip install django
+```
+
+## VERIFICA LA VERSIÓN DE DJANGO INSTALADA
+
+```bash
+django-admin --version
 ```
 
 ---
 
-## 📦 5. Archivo de Dependencias
+# ESTRUCTURA DJANGO
 
-Crea un archivo llamado:
-
-```txt
-requirements.txt
-```
-
-Este archivo debe estar ubicado en la raíz del proyecto.
-
-Su función es guardar todas las librerías necesarias para que el proyecto funcione correctamente.
-
----
 ```txt
 .
 ├── README.md
-├── manage.py
+├── manage.py 
 ├── mi_sitio
-│   ├── __init__.py
+│   ├── __init__.py 
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
@@ -98,20 +51,41 @@ Su función es guardar todas las librerías necesarias para que el proyecto func
 └── requirements.txt
 ```
 
-![image](/captura%20m6_l2%20django.PNG) 
+### manage.py
+COMANDO PARA INTERACTUAR CON EL PROYECTO.
 
-Qué diferencia hay entre un "proyecto" y una "aplicación" en Django?
+### __init__.py 
+ ARCHIVO VACÍO QUE LE DICE A PYTHON QUE  DEBE SER TRATADO COMO UN PAQUETE DE CODIGO IMPORTABLE
 
-Qué carpetas se generan dentro de la app principal?
+ ### asgi.py
+ INTERFAZ DE ENTRADA PARA SERVIDORES WEB ASINCRONOS, DESPLEGA EL SITIO EN PRODUCCIÓN SI SE USAN FUNCIONES EN TIEMPO REAL COMO WEBSOCKETS.
 
-```python
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "principal",
-]
+### settings.py
+CENTRO DE CONTROL DEL PROYECTO EN DONDE SE CONFIGURAN LAS BASES DE DATOS, APLICACIONES, IDIOMA, ZONA HORARIA Y LOS ARCHIVOS ESTATICOS.
+
+ ### urls.py
+ ENRUTADOR DEL SITIO WEB, VINCULA LAS DIRECCIONES URL QUE ESCRIBE EL USUARIO EN EL NAVEGADOR CONA LA FUNCIONES QUE GENERAN LAS PAGINAS.
+
+ ### sgi.py
+ INTERFAZ ESTANDAR DE ENTRADA PARA SERVIDORES WEB TRADCIONALES, CONECTA EL PROYECTO DJANGO CON SERVIDORES COMO APACHE O NGINX EN PRODUCCIÓN.
+
+ ---
+
+## QUÉ DIFERENCIA HAY ENTRE UN "PROYECTO" Y UNA "APLICACIÓN" EN DJANGO?
+
+- R. QUE UN PROYECTO ES LA CONFIGURACIÓN GLOBAL DE TODO EL SITIO WEB Y LA APLICACIÓN ES UN MODULO WEB INDEPENDIENTE QUE CUMPLE UNA FUNCIÓN ESPECÍFICA.
+
+## QUÉ CARPETAS SE GENERAN DENTRO DE LA APP PRINCIPAL?
+
+- R. SE GENERA LA CARPTETA ```___PYCACHE___``` Y LO DEMÁS SON ARCHIVOS ```.PY```
+
+```txt
+  mi_sitio
+    ├── __pycache__
+    ├── __init__.py 
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
 ```
+
